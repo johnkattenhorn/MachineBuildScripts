@@ -19,7 +19,10 @@ This guide provides the steps to set up a full development environment on Ubuntu
 
 ## System Update and Prerequisites
 
-First, update the system and install any essential packages.
+Prerequisites
+
+1) Vanilla Install of Ubuntu 24.04 LTS
+2) Update the system and install any essential packages.
 
 ```bash
 sudo apt update && sudo apt upgrade -y
