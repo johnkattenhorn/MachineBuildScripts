@@ -11,7 +11,7 @@ This repository contains a guide and an automation script for setting up my deve
 
 The full developer setup guide is available in the **Markdown file**. This guide provides detailed steps to manually set up the development environment on a fresh Ubuntu installation.
 
-You can view the documentation [here](./Developer_Setup_Guide.md).
+You can view the documentation [here](./Developer_Setup_Guide_for_Ubuntu.md).
 
 ## Automation Script
 
