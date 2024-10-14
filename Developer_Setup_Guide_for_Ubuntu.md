@@ -1,6 +1,6 @@
 # Developer Setup Guide for Ubuntu
 
-This guide provides the steps to set up a full development environment on Ubuntu for Docker-based development, along with other essential tools like JetBrains Toolbox, OneDrive sync, and Portainer for Docker management.
+This guide provides the steps to set up a full development environment on **Ubuntu 24.04 LTS** for Docker-based development, along with other essential tools like JetBrains Toolbox, OneDrive sync, and Portainer for Docker management.
 
 ## Table of Contents
 
@@ -14,15 +14,17 @@ This guide provides the steps to set up a full development environment on Ubuntu
 8. [Customize Zsh Shell](#customize-zsh-shell)
 9. [Bash Script for Automation](#bash-script-for-automation)
 10. [Known Issues](#known-issues)
+11. [Conclusion](#conclusion)
 
 ---
 
 ## System Update and Prerequisites
 
-Prerequisites
+### Prerequisites
 
-1) Vanilla Install of Ubuntu 24.04 LTS
-2) Update the system and install any essential packages.
+1) This guide is tested on **Ubuntu 24.04 LTS**. Ensure you are using this version.
+2) Ensure you have **root** or **sudo** access for the installation steps.
+3) Start by updating the system and installing essential packages:
 
 ```bash
 sudo apt update && sudo apt upgrade -y
@@ -59,7 +61,15 @@ sudo apt install -y build-essential apt-transport-https ca-certificates curl gnu
     newgrp docker
     ```
 
-5. **Verify Docker is installed and running**:
+    **Note**: Log out and log back in to apply the group change, or run `newgrp docker` to activate the group change immediately in your current session.
+
+5. **Restart Docker to ensure it's running**:
+
+    ```bash
+    sudo systemctl restart docker
+    ```
+
+6. **Verify Docker is installed and running**:
 
     ```bash
     docker run hello-world
@@ -80,7 +90,9 @@ sudo apt install -y build-essential apt-transport-https ca-certificates curl gnu
 
 2. **Access Portainer**:
 
-    Go to `http://localhost:9000` in your browser and set up the admin account.
+    Open a browser and go to `http://localhost:9000`. If you’re running this on a remote server, replace `localhost` with the server’s IP address.
+
+    Set up the admin account and start managing your Docker environment through Portainer.
 
 ---
 
@@ -95,17 +107,19 @@ sudo apt install -y build-essential apt-transport-https ca-certificates curl gnu
 2. **Download and install JetBrains Toolbox**:
 
     ```bash
+    # Create a permanent directory for JetBrains Toolbox
+    mkdir -p ~/apps/jetbrains-toolbox
+
+    # Download the JetBrains Toolbox tarball
     curl -L "https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.25.12999.tar.gz" -o jetbrains-toolbox.tar.gz
-    tar -xvzf jetbrains-toolbox.tar.gz
-    cd jetbrains-toolbox-1.25.12999  # Navigate into the extracted folder
+
+    # Extract the tarball into the target directory without including version numbers
+    tar -xvzf jetbrains-toolbox.tar.gz -C ~/apps/jetbrains-toolbox --strip-components=1
+
+    # Execute the toolbox
+    cd ~/apps/jetbrains-toolbox
     ./jetbrains-toolbox
-    ```
 
-3. **Move Toolbox to a permanent directory**:
-
-    ```bash
-    mkdir -p ~/apps
-    mv jetbrains-toolbox-1.25.12999 ~/apps/jetbrains-toolbox
     ```
 
 ---
@@ -274,16 +288,19 @@ Below is a simple bash script that can automate much of this setup:
 
 # System update and install prerequisites
 sudo apt update && sudo apt upgrade -y
+
+
 sudo apt install -y build-essential apt-transport-https ca-certificates curl gnupg lsb-release zsh git libfuse2
 
 # Install Docker
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /
-
-dev/null
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt update
 sudo apt install docker-ce docker-ce-cli containerd.io
 sudo usermod -aG docker $USER
+
+# Restart Docker
+sudo systemctl restart docker
 
 # Install Portainer
 docker volume create portainer_data
@@ -313,10 +330,10 @@ sudo apt update
 sudo apt install onedrive
 
 # Install JetBrains Toolbox
+mkdir -p ~/apps/jetbrains-toolbox
 curl -L "https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.25.12999.tar.gz" -o jetbrains-toolbox.tar.gz
-tar -xvzf jetbrains-toolbox.tar.gz
-cd jetbrains-toolbox-1.25.12999
-./jetbrains-toolbox
+tar -xvzf jetbrains-toolbox.tar.gz -C ~/apps/jetbrains-toolbox --strip-components=1
+~/apps/jetbrains-toolbox/jetbrains-toolbox
 
 # Change default shell to Zsh
 chsh -s $(which zsh)
@@ -337,13 +354,15 @@ To run the script:
     ./setup-dev-environment.sh
     ```
 
+---
+
 ## Known Issues
 
 ### 1. **Docker Desktop UI Fails to Start**
 
 **Issue**: The Docker Desktop backend (Docker daemon) appears to be working correctly, but the **Docker Desktop UI** does not launch when clicking the application icon. This issue seems to be fairly common based on reports from other users in the Docker GitHub Issues tracker.
 
-**Workaround**:
+**Workaround**:  
 We are currently using **Portainer** as a reliable alternative for managing Docker containers and images via a web interface. Portainer provides similar functionality and can be accessed by running it as a container. To install Portainer, refer to the section [Install Portainer](#install-portainer-docker-gui).
 
 For updates on this issue, you can track it on Docker’s official [GitHub Issues page](https://github.com/docker/for-linux/issues) under the Docker Desktop section.
@@ -364,3 +383,9 @@ Despite these attempts, the issue remains unsolved.
 For now, developers should consider using an **Ethernet connection** for better network performance until a stable fix is available for the Intel AX210 wireless driver.
 
 For more information, you can follow discussions and potential fixes on Intel and Ubuntu forums, as well as the official [Linux Wireless GitHub repository](https://github.com/intel/linux-intel-lts).
+
+---
+
+## Conclusion
+
+Your environment should now be fully set up and ready for .NET development, Docker-based projects, and other tasks. If you encounter any issues, refer to the **Known Issues** section for potential workarounds or contact your system administrator for further support.
