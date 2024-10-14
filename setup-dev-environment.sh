@@ -2,16 +2,19 @@
 
 # System update and install prerequisites
 sudo apt update && sudo apt upgrade -y
+
+
 sudo apt install -y build-essential apt-transport-https ca-certificates curl gnupg lsb-release zsh git libfuse2
 
 # Install Docker
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /
-
-dev/null
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt update
 sudo apt install docker-ce docker-ce-cli containerd.io
 sudo usermod -aG docker $USER
+
+# Restart Docker
+sudo systemctl restart docker
 
 # Install Portainer
 docker volume create portainer_data
@@ -41,10 +44,10 @@ sudo apt update
 sudo apt install onedrive
 
 # Install JetBrains Toolbox
+mkdir -p ~/apps/jetbrains-toolbox
 curl -L "https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.25.12999.tar.gz" -o jetbrains-toolbox.tar.gz
-tar -xvzf jetbrains-toolbox.tar.gz
-cd jetbrains-toolbox-1.25.12999
-./jetbrains-toolbox
+tar -xvzf jetbrains-toolbox.tar.gz -C ~/apps/jetbrains-toolbox --strip-components=1
+~/apps/jetbrains-toolbox/jetbrains-toolbox
 
 # Change default shell to Zsh
 chsh -s $(which zsh)
