@@ -43,4 +43,4 @@ The script will handle the installation of all necessary components for your dev
 
 ## Known Issues
 
-Refer to the "Known Issues" section in the [Documentation](./Developer_Setup_Guide.md#known-issues) for potential workarounds related to Docker Desktop UI issues and Intel AX210 Wireless Adapter performance problems.
+Refer to the "Known Issues" section in the [Documentation](./Developer_Setup_Guide_for_Ubuntu.md#known-issues) for potential workarounds related to Docker Desktop UI issues and Intel AX210 Wireless Adapter performance problems.
