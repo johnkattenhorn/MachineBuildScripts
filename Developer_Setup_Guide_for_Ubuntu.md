@@ -358,31 +358,19 @@ To run the script:
 
 ## Known Issues
 
-### 1. **Docker Desktop UI Fails to Start**
+### 1. **Docker Desktop UI Fails to Start** (Resolved)
 
-**Issue**: The Docker Desktop backend (Docker daemon) appears to be working correctly, but the **Docker Desktop UI** does not launch when clicking the application icon. This issue seems to be fairly common based on reports from other users in the Docker GitHub Issues tracker.
+**Issue**: The Docker Desktop backend (Docker daemon) appears to be working correctly, but the **Docker Desktop UI** does not launch when clicking the application icon. This issue was commonly reported by other users.
 
-**Workaround**:  
-We are currently using **Portainer** as a reliable alternative for managing Docker containers and images via a web interface. Portainer provides similar functionality and can be accessed by running it as a container. To install Portainer, refer to the section [Install Portainer](#install-portainer-docker-gui).
+**Resolution**:  
+Upgrading to the **6.11 Kernel** for Ubuntu resolves this issue. Instructions for installing the 6.11 Kernel can be found [here](https://ubuntuhandbook.org/index.php/2024/09/linux-kernel-6-11-released-how-to-install-in-ubuntu-24-04/).
 
-For updates on this issue, you can track it on Docker’s official [GitHub Issues page](https://github.com/docker/for-linux/issues) under the Docker Desktop section.
+### 2. **Intel AX210 Wireless Adapter Performance** (Resolved)
 
----
+**Issue**: The **Intel AX210 Wireless Adapter** was experiencing poor performance on Ubuntu, with many community-suggested fixes not resolving the issue.
 
-### 2. **Intel AX210 Wireless Adapter Performance**
-
-**Issue**: The **Intel AX210 Wireless Adapter** is currently experiencing poor performance on Ubuntu. This is a widely reported issue with the latest versions of Ubuntu, and numerous fixes have been suggested by the community, including:
-
-- Disabling power management
-- Disabling 802.11n and 802.11ax support
-- Modifying `iwlwifi` driver options
-
-Despite these attempts, the issue remains unsolved.
-
-**Workaround**:  
-For now, developers should consider using an **Ethernet connection** for better network performance until a stable fix is available for the Intel AX210 wireless driver.
-
-For more information, you can follow discussions and potential fixes on Intel and Ubuntu forums, as well as the official [Linux Wireless GitHub repository](https://github.com/intel/linux-intel-lts).
+**Resolution**:  
+Upgrading to the **6.11 Kernel** for Ubuntu significantly improves the wireless performance. Follow the [installation guide for the 6.11 Kernel](https://ubuntuhandbook.org/index.php/2024/09/linux-kernel-6-11-released-how-to-install-in-ubuntu-24-04/) to resolve the issue.
 
 ---
 
