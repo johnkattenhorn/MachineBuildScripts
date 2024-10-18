@@ -21,6 +21,14 @@ choco install -y git --package-parameters="'/GitAndUnixToolsOnPath /WindowsTermi
 if (Get-Command git -ErrorAction SilentlyContinue) {
     git --version
     Write-Host "Git installed successfully." -ForegroundColor Green
+    
+    # Set Git user name and email (replace with actual name and email)
+    git config --global user.name "John Kattenhorn"
+    git config --global user.email "john.kattenhorn@applicita.com"
+
+    # Verify Git configuration
+    Write-Host "Git configuration:"
+    git config --global --list
 } else {
     Write-Host "Git installation failed." -ForegroundColor Red
 }
