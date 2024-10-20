@@ -19,7 +19,8 @@ This repository provides a **cross-platform toolkit** for onboarding both **Make
 
 The **Makers & Managers Toolkit** is designed to support a seamless onboarding experience for both developers (**Makers**) and **Managers**, providing tailored automation scripts and comprehensive documentation for the most commonly used tools, services, and configurations.
 
-### Key Features:
+### Key Features
+
 - **Cross-Platform Setup**: Guides and automation for both **Ubuntu** and **Windows** environments.
 - **Role-Specific Customization**:
   - **Makers**: Developer-centric environments with tools like Docker, JetBrains, .NET SDK, and Visual Studio Code.
@@ -49,7 +50,7 @@ The guides for **Managers** provide a productivity-focused workspace setup, emph
 
 The **automation scripts** provided in this repository enable rapid installation and configuration of all required software for both Makers and Managers. These scripts use **Chocolatey** (on Windows) and **bash** scripts (on Ubuntu) to simplify and automate the environment setup.
 
-### Available Scripts:
+### Available Scripts
 
 - [**Ubuntu Developer Setup Script**](./setup-dev-environment.sh): Automates the installation of Docker, JetBrains Toolbox, VSCode, .NET SDK, and other essential tools.
 - [**Windows Developer Setup Script**](./setup-dev-environment.ps1): Installs all necessary development tools using Chocolatey, including Git, Docker Desktop, and JetBrains Toolbox.
@@ -61,11 +62,14 @@ The **automation scripts** provided in this repository enable rapid installation
 
 To get started, follow the instructions for your role and platform:
 
-### For Makers (Developers):
+### For Makers (Developers)
+
 1. **Clone the Repository**:
+
    ```bash
    git clone https://github.com/johnkattenhorn/MakersAndManagersToolkit.git
    ```
+
 2. **Navigate to the Appropriate Setup Guide**:
    - For Ubuntu: Follow the [**Developer Setup Guide for Ubuntu**](./Developer_Setup_Guide_Ubuntu.md).
    - For Windows: Follow the [**Developer Setup Guide for Windows**](./Developer_Setup_Guide_Windows.md).
@@ -74,11 +78,14 @@ To get started, follow the instructions for your role and platform:
    - Ubuntu: Use the `setup-dev-environment.sh` script.
    - Windows: Use the `setup-dev-environment.ps1` script.
 
-### For Managers:
+### For Managers
+
 1. **Clone the Repository**:
+
    ```bash
    git clone https://github.com/johnkattenhorn/MakersAndManagersToolkit.git
    ```
+
 2. **Navigate to the Manager Setup Guide** ([**Manager Setup Guide for Windows**](./Manager_Setup_Guide_Windows.md)).
 3. **Run the Automation Script**:
    - Windows: Use the `setup-manager-environment.ps1` script to automate the setup process.
