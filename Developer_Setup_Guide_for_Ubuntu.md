@@ -9,12 +9,13 @@ This guide provides the steps to set up a full development environment on **Ubun
 3. [Install Portainer (Docker GUI)](#install-portainer-docker-gui)
 4. [Install JetBrains Toolbox](#install-jetbrains-toolbox)
 5. [Install Visual Studio Code](#install-visual-studio-code)
-6. [Install OneDrive Sync with GUI](#install-onedrive-sync-with-gui)
-7. [Install .NET SDK](#install-net-sdk)
-8. [Customize Zsh Shell](#customize-zsh-shell)
-9. [Bash Script for Automation](#bash-script-for-automation)
-10. [Known Issues](#known-issues)
-11. [Conclusion](#conclusion)
+6. [Install Git Credential Manager and Configure GPG](#install-git-credential-manager-and-configure-gpg)
+7. [Install OneDrive Sync with GUI](#install-onedrive-sync-with-gui)
+8. [Install .NET SDK](#install-net-sdk)
+9. [Customize Zsh Shell](#customize-zsh-shell)
+10. [Bash Script for Automation](#bash-script-for-automation)
+11. [Known Issues](#known-issues)
+12. [Conclusion](#conclusion)
 
 ---
 
@@ -22,7 +23,11 @@ This guide provides the steps to set up a full development environment on **Ubun
 
 ### Prerequisites
 
-1) This guide is tested on **Ubuntu 24.04 LTS**. Ensure you are using this version.
+1) This guide is tested on **Ubuntu 24.04 LTS**. Ensure you are using this version
+
+.
+
+
 2) Ensure you have **root** or **sudo** access for the installation steps.
 3) Start by updating the system and installing essential packages:
 
@@ -119,7 +124,6 @@ sudo apt install -y build-essential apt-transport-https ca-certificates curl gnu
     # Execute the toolbox
     cd ~/apps/jetbrains-toolbox
     ./jetbrains-toolbox
-
     ```
 
 ---
@@ -147,6 +151,59 @@ Once VS Code is installed, open it and install the following extensions:
 
 - **C#** (for .NET development)
 - **Docker** (for managing Docker containers)
+
+---
+
+## Install Git Credential Manager and Configure GPG
+
+### 1. **Install Git Credential Manager**
+
+```bash
+sudo apt update
+sudo apt install git-credential-manager-core
+```
+
+### 2. **Configure Git to use GPG as the Credential Store**
+
+```bash
+git config --global credential.helper gpg
+```
+
+### 3. **Generate a GPG Key**
+
+```bash
+gpg --full-generate-key
+```
+
+Follow the prompts to generate your key. Choose the default options unless you have specific requirements.
+
+### 4. **List GPG Keys**
+
+```bash
+gpg --list-secret-keys --keyid-format LONG
+```
+
+### 5. **Configure Git to Use Your GPG Key**
+
+Find your GPG key ID from the previous command's output and configure Git to use it:
+
+```bash
+git config --global user.signingkey YOUR_GPG_KEY_ID
+```
+
+### 6. **Enable GPG Signing for Commits**
+
+```bash
+git config --global commit.gpgSign true
+```
+
+### 7. **Export Your GPG Public Key**
+
+```bash
+gpg --armor --export YOUR_GPG_KEY_ID
+```
+
+Copy the output and add it to your Git hosting service (e.g., GitHub, GitLab) under the GPG keys section of your account settings.
 
 ---
 
@@ -288,8 +345,6 @@ Below is a simple bash script that can automate much of this setup:
 
 # System update and install prerequisites
 sudo apt update && sudo apt upgrade -y
-
-
 sudo apt install -y build-essential apt-transport-https ca-certificates curl gnupg lsb-release zsh git libfuse2
 
 # Install Docker
@@ -314,6 +369,28 @@ sudo install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/
 sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 sudo apt update
 sudo apt install code
+
+# Install Git Credential Manager
+sudo apt update
+sudo apt install git-credential-manager-core
+
+# Configure Git to use GPG as the Credential Store
+git config --global credential.helper gpg
+
+# Generate a GPG Key
+gpg --full-generate-key
+
+# List GPG Keys
+gpg --list-secret-keys --keyid-format LONG
+
+# Configure Git to Use Your GPG Key
+git config --global user.signingkey YOUR_GPG_KEY_ID
+
+# Enable GPG Signing for Commits
+git config --global commit.gpgSign true
+
+# Export Your GPG Public Key
+gpg --armor --export YOUR_GPG_KEY_ID
 
 # Install .NET SDK 8 LTS and 9 Preview
 wget https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
@@ -341,7 +418,11 @@ chsh -s $(which zsh)
 
 To run the script:
 
-1. Save it to a file, e.g., `setup-dev-environment.sh`.
+1. Save it to a file, e.g., 
+
+setup-dev-environment.sh
+
+.
 2. Make the file executable:
 
     ```bash
