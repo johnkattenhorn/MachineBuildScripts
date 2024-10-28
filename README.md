@@ -1,46 +1,115 @@
-# Ubuntu Developer Setup Guide
+# Makers & Managers Toolkit
 
-This repository contains a guide and an automation script for setting up my developer environment on **Ubuntu 24.04 LTS**. The setup includes Docker, JetBrains Toolbox, Visual Studio Code, OneDrive sync, .NET SDK, and Zsh customisation.
+This repository provides a **cross-platform toolkit** for onboarding both **Makers** (developers) and **Managers** in our company, **Applicita**. These setup guides and automation scripts are used internally to streamline workspace setup across **Ubuntu** and **Windows** environments. We have decided to open-source these tools to share them with others who may find them useful for their own teams.
 
 ## Table of Contents
-- [Documentation](#documentation)
-- [Automation Script](#automation-script)
-- [How to Use the Script](#how-to-use-the-script)
 
-## Documentation
+1. [Overview](#overview)
+2. [Setup Guides](#setup-guides)
+   - [Makers Setup Guides](#makers-setup-guides)
+   - [Managers Setup Guides](#managers-setup-guides)
+3. [Automation Scripts](#automation-scripts)
+4. [Getting Started](#getting-started)
+5. [Contribution Guidelines](#contribution-guidelines)
+6. [License](#license)
 
-The full developer setup guide is available in the **Markdown file**. This guide provides detailed steps to manually set up the development environment on a fresh Ubuntu installation.
+---
 
-You can view the documentation [here](./Developer_Setup_Guide_for_Ubuntu.md).
+## Overview
 
-## Automation Script
+The **Makers & Managers Toolkit** is designed to support a seamless onboarding experience for both developers (**Makers**) and **Managers**, providing tailored automation scripts and comprehensive documentation for the most commonly used tools, services, and configurations.
 
-To speed up the setup process, an **automation script** is also provided. This script automates the installation of Docker, Portainer, Visual Studio Code, JetBrains Toolbox, .NET SDK, and more.
+### Key Features
 
-You can find the script [here](./setup-dev-environment.sh).
+- **Cross-Platform Setup**: Guides and automation for both **Ubuntu** and **Windows** environments.
+- **Role-Specific Customization**:
+  - **Makers**: Developer-centric environments with tools like Docker, JetBrains, .NET SDK, and Visual Studio Code.
+  - **Managers**: Productivity-focused setup including Office 365, communication tools (Teams, Slack, Discord), and browsers (Chrome, Firefox).
+- **Efficient Onboarding**: Simplify and standardize the onboarding process for new employees and team members.
 
-## How to Use the Script
+---
 
-To run the automation script, follow these steps:
+## Setup Guides
 
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/johnkattenhorn/linux-developer-environment.git
-    cd linux-developer-environment
-    ```
+### Makers Setup Guides
 
-2. Make the script executable:
-    ```bash
-    chmod +x setup-dev-environment.sh
-    ```
+The guides for **Makers** (developers) focus on creating a robust environment suitable for coding, development, and deployment. These include the installation of various development tools like Docker, VSCode, and terminal customizations.
 
-3. Run the script:
-    ```bash
-    ./setup-dev-environment.sh
-    ```
+- [**Ubuntu Developer Setup Guide**](./Developer_Setup_Guide_Ubuntu.md): Instructions and automation for setting up a full .NET and Docker-based development environment on Ubuntu.
+- [**Windows Developer Setup Guide**](./Developer_Setup_Guide_Windows.md): Detailed steps for setting up a Windows-based development environment with .NET SDK, Docker, and other development tools.
 
-The script will handle the installation of all necessary components for your developer environment. Note - its completely un-tested as I ran the steps one by one manually, but I'll test it the next time!
+### Managers Setup Guides
 
-## Known Issues
+The guides for **Managers** provide a productivity-focused workspace setup, emphasizing communication tools, productivity applications, and easy access to collaboration platforms.
 
-Refer to the "Known Issues" section in the [Documentation](./Developer_Setup_Guide_for_Ubuntu.md#known-issues) for potential workarounds related to Docker Desktop UI issues and Intel AX210 Wireless Adapter performance problems.
+- [**Windows Manager Setup Guide**](./Manager_Setup_Guide_Windows.md): Steps and automation for setting up Office 365, communication tools (Slack, Discord, Teams), and productivity tools.
+
+---
+
+## Automation Scripts
+
+The **automation scripts** provided in this repository enable rapid installation and configuration of all required software for both Makers and Managers. These scripts use **Chocolatey** (on Windows) and **bash** scripts (on Ubuntu) to simplify and automate the environment setup.
+
+### Available Scripts
+
+- [**Ubuntu Developer Setup Script**](./setup-dev-environment.sh): Automates the installation of Docker, JetBrains Toolbox, VSCode, .NET SDK, and other essential tools.
+- [**Windows Developer Setup Script**](./setup-dev-environment.ps1): Installs all necessary development tools using Chocolatey, including Git, Docker Desktop, and JetBrains Toolbox.
+- [**Windows Manager Setup Script**](./setup-manager-environment.ps1): Automates the installation of productivity tools, browsers, and communication applications for managers.
+
+---
+
+## Getting Started
+
+To get started, follow the instructions for your role and platform:
+
+### For Makers (Developers)
+
+1. **Clone the Repository**:
+
+   ```bash
+   git clone https://github.com/johnkattenhorn/MakersAndManagersToolkit.git
+   ```
+
+2. **Navigate to the Appropriate Setup Guide**:
+   - For Ubuntu: Follow the [**Developer Setup Guide for Ubuntu**](./Developer_Setup_Guide_Ubuntu.md).
+   - For Windows: Follow the [**Developer Setup Guide for Windows**](./Developer_Setup_Guide_Windows.md).
+
+3. **Run the Automation Script**:
+   - Ubuntu: Use the `setup-dev-environment.sh` script.
+   - Windows: Use the `setup-dev-environment.ps1` script.
+
+### For Managers
+
+1. **Clone the Repository**:
+
+   ```bash
+   git clone https://github.com/johnkattenhorn/MakersAndManagersToolkit.git
+   ```
+
+2. **Navigate to the Manager Setup Guide** ([**Manager Setup Guide for Windows**](./Manager_Setup_Guide_Windows.md)).
+3. **Run the Automation Script**:
+   - Windows: Use the `setup-manager-environment.ps1` script to automate the setup process.
+
+---
+
+## Contribution Guidelines
+
+This toolkit is used internally by **Applicita**, but we believe it could be useful for others as well. Contributions are welcome!
+
+- **Reporting Issues**: If you encounter any issues, please open an issue in the repository.
+- **Feature Requests**: If you have ideas for improving the toolkit, we’d love to hear them.
+- **Pull Requests**: Contributions in the form of pull requests are always welcome. Please ensure that changes are well-documented and tested.
+
+For detailed contribution guidelines, please see `CONTRIBUTING.md`.
+
+---
+
+## License
+
+This project is licensed under the **MIT License**. See the `LICENSE` file for more details.
+
+---
+
+## Feedback
+
+We hope this toolkit helps streamline onboarding processes for Makers and Managers alike! If you have any feedback, please feel free to reach out or create an issue in the repository.

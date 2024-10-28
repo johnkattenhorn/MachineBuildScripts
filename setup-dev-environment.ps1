@@ -47,6 +47,9 @@ try {
     Write-Host "Failed to start Docker. Please check the installation and try again." -ForegroundColor Red
 }
 
+# Install Visual Studio 2022 Professional - All Workloads
+choco install visualstudio2022professional --package-parameters "--allWorkloads --includeRecommended --includeOptional --passive --locale en-US"
+
 # Show hidden files and file extensions
 Write-Host "Configuring system to show hidden files and file extensions..." -ForegroundColor Yellow
 Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name Hidden -Value 1
