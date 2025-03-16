@@ -1,6 +1,6 @@
-# Makers & Managers Toolkit
+# Machine Build Scripts
 
-This repository provides a **cross-platform toolkit** for onboarding both **Makers** (developers) and **Managers** in our company, **Applicita**. These setup guides and automation scripts are used internally to streamline workspace setup across **Ubuntu** and **Windows** environments. We have decided to open-source these tools to share them with others who may find them useful for their own teams.
+This repository contains my **cross-platform build scripts** for on boarding machines that I used for development and non-development activities. These setup guides and automation scripts are used by me to streamline workspace setup across **Ubuntu** and **Windows** environments.
 
 ## Table of Contents
 
@@ -17,13 +17,13 @@ This repository provides a **cross-platform toolkit** for onboarding both **Make
 
 ## Overview
 
-The **Makers & Managers Toolkit** is designed to support a seamless onboarding experience for both developers (**Makers**) and **Managers**, providing tailored automation scripts and comprehensive documentation for the most commonly used tools, services, and configurations.
+My tailored automation scripts and comprehensive documentation for the most commonly used tools, services, and configurations that I use in my machine builds.
 
 ### Key Features
 
 - **Cross-Platform Setup**: Guides and automation for both **Ubuntu** and **Windows** environments.
 - **Role-Specific Customization**:
-  - **Makers**: Developer-centric environments with tools like Docker, JetBrains, .NET SDK, and Visual Studio Code.
+  - **Developers**: Developer-centric environments with tools like Docker, JetBrains, .NET SDK, and Visual Studio Code.
   - **Managers**: Productivity-focused setup including Office 365, communication tools (Teams, Slack, Discord), and browsers (Chrome, Firefox).
 - **Efficient Onboarding**: Simplify and standardize the onboarding process for new employees and team members.
 
@@ -31,9 +31,9 @@ The **Makers & Managers Toolkit** is designed to support a seamless onboarding e
 
 ## Setup Guides
 
-### Makers Setup Guides
+### Developer Setup Guides
 
-The guides for **Makers** (developers) focus on creating a robust environment suitable for coding, development, and deployment. These include the installation of various development tools like Docker, VSCode, and terminal customizations.
+The guides for **Developers** focus on creating a robust environment suitable for coding, development, and deployment. These include the installation of various development tools like Docker, VSCode, and terminal customizations.
 
 - [**Ubuntu Developer Setup Guide**](./Developer_Setup_Guide_Ubuntu.md): Instructions and automation for setting up a full .NET and Docker-based development environment on Ubuntu.
 - [**Windows Developer Setup Guide**](./Developer_Setup_Guide_Windows.md): Detailed steps for setting up a Windows-based development environment with .NET SDK, Docker, and other development tools.
@@ -62,7 +62,7 @@ The **automation scripts** provided in this repository enable rapid installation
 
 To get started, follow the instructions for your role and platform:
 
-### For Makers (Developers)
+### For Developers
 
 1. **Clone the Repository**:
 
@@ -94,7 +94,7 @@ To get started, follow the instructions for your role and platform:
 
 ## Contribution Guidelines
 
-This toolkit is used internally by **Applicita**, but we believe it could be useful for others as well. Contributions are welcome!
+This toolkit is just for my personal use. Contributions are welcome!
 
 - **Reporting Issues**: If you encounter any issues, please open an issue in the repository.
 - **Feature Requests**: If you have ideas for improving the toolkit, we’d love to hear them.
@@ -112,4 +112,4 @@ This project is licensed under the **MIT License**. See the `LICENSE` file for m
 
 ## Feedback
 
-We hope this toolkit helps streamline onboarding processes for Makers and Managers alike! If you have any feedback, please feel free to reach out or create an issue in the repository.
+We hope this toolkit helps streamline onboarding processes for Developers and Managers alike! If you have any feedback, please feel free to reach out or create an issue in the repository.
